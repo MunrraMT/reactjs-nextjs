@@ -1,14 +1,11 @@
 import './App.css';
 import { Component } from 'react';
+import PostCard from './components/PostCard';
 
 class App extends Component {
   state = {
     posts: []
   };
-
-  componentDidMount() {
-    this.loadPosts();
-  }
 
   loadPosts = async () => {
     const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
@@ -26,6 +23,10 @@ class App extends Component {
     this.setState({ posts: postsAndPhotos });
   };
 
+  componentDidMount() {
+    this.loadPosts();
+  }
+
   componentDidUpdate() {}
 
   componentWillUnmount() {}
@@ -37,20 +38,8 @@ class App extends Component {
       <main className='container'>
         <section className='posts'>
           {posts.length > 0 ? (
-            posts.map((post, index) => (
-              <article className='post' key={post.id} id={post.id}>
-                <header>
-                  <img
-                    className='post__img'
-                    src={post.cover}
-                    alt={post.title}
-                  />
-                </header>
-                <section className='post__content'>
-                  <h2>{post.title}</h2>
-                  <p>{post.body}</p>
-                </section>
-              </article>
+            posts.map(({ id, cover, title, body }) => (
+              <PostCard key={id} cover={cover} title={title} body={body} />
             ))
           ) : (
             <p>Loading...</p>
