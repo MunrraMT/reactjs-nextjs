@@ -7,7 +7,7 @@ import Home from './templates/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Home test-props='Passando Props para Class' />
   </React.StrictMode>,
   document.getElementById('root')
 );

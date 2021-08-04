@@ -38,14 +38,18 @@ class Home extends Component {
     this.setState({ posts, page: nextPage });
   };
 
-  async componentDidMount() {
-    await this.loadPosts();
-  }
-
   handleInput = (e) => {
     const { value } = e.target;
     this.setState({ searchValue: value });
   };
+
+  async componentDidMount() {
+    await this.loadPosts();
+  }
+
+  componentDidUpdate() {
+    console.log(this.props['test-props']);
+  }
 
   render() {
     const { posts, allPosts, searchValue } = this.state;
