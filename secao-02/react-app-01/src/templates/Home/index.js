@@ -5,13 +5,15 @@ import { Component } from 'react';
 import loadPosts from '../../utils/load-posts';
 import Posts from '../../components/Posts';
 import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
 
 class Home extends Component {
   state = {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPerPage: 2
+    postsPerPage: 2,
+    searchValue: ''
   };
 
   loadPosts = async () => {
@@ -40,33 +42,55 @@ class Home extends Component {
     await this.loadPosts();
   }
 
+  handleInput = (e) => {
+    const { value } = e.target;
+    this.setState({ searchValue: value });
+  };
+
   render() {
-    const { posts, allPosts } = this.state;
+    const { posts, allPosts, searchValue } = this.state;
+
     const noMorePosts = posts.length === allPosts.length;
+
+    const filteredPosts = allPosts.filter((post) => {
+      return (
+        post.title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1 ||
+        post.body.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+      );
+    });
 
     return (
       <>
         <header
           style={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '0.5rem',
-            height: '3rem'
+            padding: '1rem',
+            height: '7rem'
           }}
         >
           <h1>Estudo de ReactJS - App Posts</h1>
+          <TextInput searchValue={searchValue} handleInput={this.handleInput} />
         </header>
 
         <main className='container'>
-          <Posts posts={posts} />
+          {searchValue ? (
+            (filteredPosts.length === 0 && <p>Busca não encontrada</p>) ||
+            (filteredPosts.length > 0 && <Posts posts={filteredPosts} />)
+          ) : (
+            <Posts posts={posts} />
+          )}
         </main>
 
-        <footer>
-          <Button disabled={noMorePosts} handleClick={this.loadMorePosts}>
-            Ver mais posts
-          </Button>
-        </footer>
+        {!searchValue && (
+          <footer>
+            <Button disabled={noMorePosts} handleClick={this.loadMorePosts}>
+              Ver mais posts
+            </Button>
+          </footer>
+        )}
       </>
     );
   }
