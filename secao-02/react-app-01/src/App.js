@@ -3,61 +3,60 @@ import { Component } from 'react';
 
 class App extends Component {
   state = {
-    counter: 0,
-    posts: [
-      { id: 1, title: 'O título 1', body: 'O corpo 1' },
-      { id: 2, title: 'O título 2', body: 'O corpo 2' },
-      { id: 3, title: 'O título 3', body: 'O corpo 3' }
-    ]
-  };
-
-  setTimeoutUpdateTitle = null;
-  setTimeoutUpdateCount = null;
-
-  handleTimeoutTitle = () => {
-    const { posts } = this.state;
-
-    posts[0].title = 'Novo título';
-
-    this.timeoutUpdate = setTimeout(() => {
-      this.setState({ posts });
-    }, 5000);
-  };
-
-  handleTimeoutCounter = () => {
-    const { counter } = this.state;
-
-    this.setTimeoutUpdateCount = setTimeout(() => {
-      this.setState({ counter: counter + 1 });
-    }, 1000);
+    posts: []
   };
 
   componentDidMount() {
-    this.handleTimeoutTitle();
+    this.loadPosts();
   }
 
-  componentDidUpdate() {
-    this.handleTimeoutCounter();
-  }
+  loadPosts = async () => {
+    const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
+    const photosResponse = fetch('https://jsonplaceholder.typicode.com/photos');
 
-  componentWillUnmount() {
-    clearTimeout(this.setTimeoutUpdateCount);
-    clearTimeout(this.setTimeoutUpdateTitle);
-  }
+    const [posts, photos] = await Promise.all([postsResponse, photosResponse]);
+
+    const postsJson = await posts.json();
+    const photosJson = await photos.json();
+
+    const postsAndPhotos = postsJson.map((post, index) => {
+      return { ...post, cover: photosJson[index].url };
+    });
+
+    this.setState({ posts: postsAndPhotos });
+  };
+
+  componentDidUpdate() {}
+
+  componentWillUnmount() {}
 
   render() {
-    const { posts, counter } = this.state;
+    const { posts } = this.state;
 
     return (
-      <div className='App'>
-        <h2>{counter}</h2>
-        {posts.map((post) => (
-          <section key={post.id} id={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.body}</p>
-          </section>
-        ))}
-      </div>
+      <main className='container'>
+        <section className='posts'>
+          {posts.length > 0 ? (
+            posts.map((post, index) => (
+              <article className='post' key={post.id} id={post.id}>
+                <header>
+                  <img
+                    className='post__img'
+                    src={post.cover}
+                    alt={post.title}
+                  />
+                </header>
+                <section className='post__content'>
+                  <h2>{post.title}</h2>
+                  <p>{post.body}</p>
+                </section>
+              </article>
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </section>
+      </main>
     );
   }
 }
