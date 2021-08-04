@@ -1,6 +1,8 @@
 import './App.css';
 import { Component } from 'react';
-import PostCard from './components/PostCard';
+
+import loadPosts from './utils/load-posts';
+import Posts from './components/Posts';
 
 class App extends Component {
   state = {
@@ -8,44 +10,34 @@ class App extends Component {
   };
 
   loadPosts = async () => {
-    const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
-    const photosResponse = fetch('https://jsonplaceholder.typicode.com/photos');
-
-    const [posts, photos] = await Promise.all([postsResponse, photosResponse]);
-
-    const postsJson = await posts.json();
-    const photosJson = await photos.json();
-
-    const postsAndPhotos = postsJson.map((post, index) => {
-      return { ...post, cover: photosJson[index].url };
-    });
+    const postsAndPhotos = await loadPosts();
 
     this.setState({ posts: postsAndPhotos });
   };
 
-  componentDidMount() {
-    this.loadPosts();
+  async componentDidMount() {
+    await this.loadPosts();
   }
-
-  componentDidUpdate() {}
-
-  componentWillUnmount() {}
 
   render() {
     const { posts } = this.state;
 
     return (
-      <main className='container'>
-        <section className='posts'>
-          {posts.length > 0 ? (
-            posts.map(({ id, cover, title, body }) => (
-              <PostCard key={id} cover={cover} title={title} body={body} />
-            ))
-          ) : (
-            <p>Loading...</p>
-          )}
-        </section>
-      </main>
+      <>
+        <header
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0.5rem'
+          }}
+        >
+          <h1>Estudo de ReactJS - App Posts</h1>
+        </header>
+        <main className='container'>
+          <Posts posts={posts} />
+        </main>
+      </>
     );
   }
 }

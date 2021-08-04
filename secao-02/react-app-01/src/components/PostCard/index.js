@@ -4,7 +4,7 @@ const PostCard = ({ cover, title, body }) => (
       <img className='post__img' src={cover} alt={title} />
     </header>
     <section className='post__content'>
-      <h2>{title}</h2>
+      <h2 style={{ marginBottom: '1rem' }}>{title}</h2>
       <p>{body}</p>
     </section>
   </article>
