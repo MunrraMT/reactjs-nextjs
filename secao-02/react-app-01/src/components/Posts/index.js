@@ -1,3 +1,5 @@
+import './styles.css';
+
 import PostCard from '../PostCard';
 
 const Posts = ({ posts }) => (
@@ -7,7 +9,15 @@ const Posts = ({ posts }) => (
         <PostCard key={id} cover={cover} title={title} body={body} />
       ))
     ) : (
-      <p>Loading...</p>
+      <p
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        Loading...
+      </p>
     )}
   </section>
 );
