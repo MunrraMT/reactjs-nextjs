@@ -1,6 +1,6 @@
 import './styles.css';
 
-const TextInput = ({ searchValue = '', handleInput = () => {} }) => (
+const TextInput = ({ searchValue, handleInput }) => (
   <input
     value={searchValue}
     onInput={handleInput}
