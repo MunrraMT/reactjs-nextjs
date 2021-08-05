@@ -75,9 +75,11 @@ const Home = () => {
 
       {!searchValue && (
         <footer>
-          <Button disabled={noMorePosts} handleClick={loadMorePosts}>
-            Ver mais posts
-          </Button>
+          <Button
+            disabled={noMorePosts}
+            handleClick={loadMorePosts}
+            text='Ver mais posts'
+          />
         </footer>
       )}
     </>
