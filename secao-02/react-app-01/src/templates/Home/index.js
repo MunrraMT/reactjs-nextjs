@@ -23,13 +23,14 @@ const Home = () => {
     };
 
     handleLoadPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadMorePosts = () => {
     const nextPage = page + postsPerPage;
     const nextPosts = allPosts.slice(nextPage, nextPage + postsPerPage);
 
-    setPosts([...posts, ...nextPosts]);
+    setPosts((prevPosts) => [...prevPosts, ...nextPosts]);
     setPage(nextPage);
   };
 
