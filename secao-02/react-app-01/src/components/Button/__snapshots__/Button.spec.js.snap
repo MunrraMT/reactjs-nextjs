@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve testar <Button /> Deve fazer um Snapshot 1`] = `
+<button
+  class="btn-more-posts"
+  type="button"
+>
+  load more
+</button>
+`;

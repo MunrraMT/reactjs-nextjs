@@ -52,4 +52,13 @@ describe('Deve testar <Button />', () => {
 
     expect(getByRole('button')).toBeEnabled();
   });
+
+  test('Deve fazer um Snapshot', () => {
+    const fn = jest.fn();
+    const { container } = render(
+      <Button text='load more' handleClick={fn} disabled={false} />
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
