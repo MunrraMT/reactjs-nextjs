@@ -1,3 +1,4 @@
+import { func, string } from 'prop-types';
 import './styles.css';
 
 const TextInput = ({ searchValue, handleInput }) => (
@@ -9,5 +10,10 @@ const TextInput = ({ searchValue, handleInput }) => (
     placeholder='Busque aqui'
   />
 );
+
+TextInput.propTypes = {
+  searchValue: string.isRequired,
+  handleInput: func.isRequired,
+};
 
 export default TextInput;

@@ -3,12 +3,15 @@ import userEvent from '@testing-library/user-event';
 import Button from '.';
 
 describe('Deve testar <Button />', () => {
+  const fn = jest.fn();
+  const text = 'load more';
+
   test('Deve renderizar sem erros', () => {
-    render(<Button />);
+    render(<Button text={text} handleClick={fn} />);
   });
 
   test('Deve ter uma classe - "btn-more-posts"', () => {
-    const { getByRole } = render(<Button />);
+    const { getByRole } = render(<Button text={text} handleClick={fn} />);
     const button = getByRole('button');
 
     expect.assertions(1);
@@ -16,7 +19,7 @@ describe('Deve testar <Button />', () => {
   });
 
   test('Deve conter um texto - "Load more"', () => {
-    const { getByRole } = render(<Button text='load more' />);
+    const { getByRole } = render(<Button text={text} handleClick={fn} />);
     const button = getByRole('button', { name: /load more/i });
 
     expect.assertions(1);
@@ -24,8 +27,7 @@ describe('Deve testar <Button />', () => {
   });
 
   test('Deve chamar uma função quando clicado - fireEvent', () => {
-    const fn = jest.fn();
-    const { getByRole } = render(<Button handleClick={fn} />);
+    const { getByRole } = render(<Button text={text} handleClick={fn} />);
 
     fireEvent.click(getByRole('button'));
 
@@ -33,8 +35,7 @@ describe('Deve testar <Button />', () => {
   });
 
   test('Deve chamar uma função quando clicado - userEvent', () => {
-    const fn = jest.fn();
-    const { getByRole } = render(<Button handleClick={fn} />);
+    const { getByRole } = render(<Button text={text} handleClick={fn} />);
 
     userEvent.click(getByRole('button'));
 
@@ -42,21 +43,24 @@ describe('Deve testar <Button />', () => {
   });
 
   test('Deve estar disabled quando disabled for passado como true', () => {
-    const { getByRole } = render(<Button disabled={true} />);
+    const { getByRole } = render(
+      <Button disabled text={text} handleClick={fn} />,
+    );
 
     expect(getByRole('button')).toBeDisabled();
   });
 
   test('Deve estar enabled quando disabled for passado como false', () => {
-    const { getByRole } = render(<Button disabled={false} />);
+    const { getByRole } = render(
+      <Button disabled={false} text={text} handleClick={fn} />,
+    );
 
     expect(getByRole('button')).toBeEnabled();
   });
 
   test('Deve fazer um Snapshot', () => {
-    const fn = jest.fn();
     const { container } = render(
-      <Button text='load more' handleClick={fn} disabled={false} />
+      <Button disabled={false} text={text} handleClick={fn} />,
     );
 
     expect(container.firstChild).toMatchSnapshot();

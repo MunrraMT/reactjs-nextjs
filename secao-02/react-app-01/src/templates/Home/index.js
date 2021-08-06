@@ -23,7 +23,6 @@ const Home = () => {
     };
 
     handleLoadPosts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadMorePosts = () => {
@@ -41,12 +40,11 @@ const Home = () => {
 
   const noMorePosts = posts.length === allPosts.length;
 
-  const filteredPosts = allPosts.filter((post) => {
-    return (
+  const filteredPosts = allPosts.filter(
+    (post) =>
       post.title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1 ||
       post.body.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
-    );
-  });
+  );
 
   return (
     <>

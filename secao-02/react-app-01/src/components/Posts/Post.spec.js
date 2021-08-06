@@ -9,12 +9,6 @@ describe('Deve testar o componente <Posts />', () => {
     render(<Posts />);
   });
 
-  test('Deve renderizar texto "Não existem posts" se não for passado posts por props', () => {
-    const { getByText } = render(<Posts />);
-
-    expect(getByText('Não existem posts')).toBeInTheDocument();
-  });
-
   test('Deve renderizar texto "Loading..." se for passado um array vazio por props', () => {
     const { getByText } = render(<Posts posts={[]} />);
 

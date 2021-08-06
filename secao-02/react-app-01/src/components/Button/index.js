@@ -1,14 +1,25 @@
+import { func, string, bool } from 'prop-types';
 import './styles.css';
 
-const Button = ({ disabled, handleClick, text }) => (
+const Button = ({ handleClick, disabled, text }) => (
   <button
-    disabled={disabled}
     className='btn-more-posts'
     type='button'
     onClick={handleClick}
+    disabled={disabled}
   >
     {text}
   </button>
 );
+
+Button.defaultProps = {
+  disabled: false,
+};
+
+Button.propTypes = {
+  handleClick: func.isRequired,
+  disabled: bool,
+  text: string.isRequired,
+};
 
 export default Button;
