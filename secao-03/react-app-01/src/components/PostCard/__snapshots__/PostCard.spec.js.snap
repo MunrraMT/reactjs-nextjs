@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve testar o <PostCard /> Deve fazer um Snapshot 1`] = `
+<article
+  class="post"
+>
+  <header>
+    <img
+      alt="title 01"
+      class="post__img"
+      src="img/img.webp"
+    />
+  </header>
+  <section
+    class="post__content"
+  >
+    <h2
+      style="margin-bottom: 1rem;"
+    >
+      title 01
+    </h2>
+    <p>
+      body 01
+    </p>
+  </section>
+</article>
+`;

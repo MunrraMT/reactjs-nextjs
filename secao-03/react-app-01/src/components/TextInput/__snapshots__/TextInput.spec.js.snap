@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve testar o componente <TextInput /> Deve gerar um Snapshot 1`] = `
+<input
+  class="text-input"
+  placeholder="Busque aqui"
+  type="search"
+  value="Estou pesquisando"
+/>
+`;
