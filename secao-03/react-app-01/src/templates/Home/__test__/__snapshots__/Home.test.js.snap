@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve testar o componente Home Deve fazer um Snapshot 1`] = `
+<div>
+  <header
+    style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; height: 7rem;"
+  >
+    <h1>
+      Estudo de ReactJS - App Posts
+    </h1>
+    <input
+      class="text-input"
+      placeholder="Busque aqui"
+      type="search"
+      value=""
+    />
+  </header>
+  <main
+    class="container"
+  >
+    <section
+      class="posts"
+    >
+      <article
+        class="post"
+      >
+        <header>
+          <img
+            alt="title 01"
+            class="post__img"
+            src="https://via.placeholder.com/600/92c952"
+          />
+        </header>
+        <section
+          class="post__content"
+        >
+          <h2
+            style="margin-bottom: 1rem;"
+          >
+            title 01
+          </h2>
+          <p>
+            body 01
+          </p>
+        </section>
+      </article>
+      <article
+        class="post"
+      >
+        <header>
+          <img
+            alt="title 02"
+            class="post__img"
+            src="https://via.placeholder.com/600/771796"
+          />
+        </header>
+        <section
+          class="post__content"
+        >
+          <h2
+            style="margin-bottom: 1rem;"
+          >
+            title 02
+          </h2>
+          <p>
+            body 02
+          </p>
+        </section>
+      </article>
+      <article
+        class="post"
+      >
+        <header>
+          <img
+            alt="title 03"
+            class="post__img"
+            src="https://via.placeholder.com/600/24f355"
+          />
+        </header>
+        <section
+          class="post__content"
+        >
+          <h2
+            style="margin-bottom: 1rem;"
+          >
+            title 03
+          </h2>
+          <p>
+            body 03
+          </p>
+        </section>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <button
+      class="btn-more-posts"
+      type="button"
+    >
+      Ver mais posts
+    </button>
+  </footer>
+</div>
+`;
