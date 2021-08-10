@@ -8,7 +8,7 @@ function App() {
 
   const reverseClass = reverse ? 'App-logo reverse' : 'App-logo';
 
-  const reverseToggle = () => setReverse(!reverse);
+  const reverseToggle = () => setReverse((prev) => !prev);
   const handleIncrement = () => setCounter((prev) => prev + 1);
 
   return (
