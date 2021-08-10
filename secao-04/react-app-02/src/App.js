@@ -1,7 +1,7 @@
-import UseEffect from './Hooks/UseEffect';
+import UseCallback from './Hooks/UseCallback';
 
 function App() {
-  return <UseEffect />;
+  return <UseCallback />;
 }
 
 export default App;
