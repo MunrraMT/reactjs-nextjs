@@ -1,7 +1,7 @@
-import UseMemo from './Hooks/UseMemo';
+import UseRef from './Hooks/UseRef';
 
 function App() {
-  return <UseMemo />;
+  return <UseRef />;
 }
 
 export default App;
