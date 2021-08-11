@@ -1,7 +1,7 @@
-import UseRef from './Hooks/UseRef';
+import UseContext from './Hooks/UseContext';
 
 function App() {
-  return <UseRef />;
+  return <UseContext />;
 }
 
 export default App;
