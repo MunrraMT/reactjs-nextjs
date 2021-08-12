@@ -1,7 +1,7 @@
-import UseContextComUseReducer from './Hooks/useContext-useReducer';
+import CustomHook from './Hooks/customHook';
 
 function App() {
-  return <UseContextComUseReducer />;
+  return <CustomHook />;
 }
 
 export default App;
