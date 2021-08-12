@@ -1,7 +1,7 @@
-import UseContext from './Hooks/UseContext';
+import UseReducer from './Hooks/UseReducer';
 
 function App() {
-  return <UseContext />;
+  return <UseReducer />;
 }
 
 export default App;
