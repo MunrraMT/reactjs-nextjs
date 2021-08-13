@@ -7,15 +7,18 @@ import '../templates/App/styles.css';
 const useFetch = (url, options) => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [wait, setWait] = useState(false);
 
   useEffect(() => {
-    let wait = false;
-
+    setWait(false);
     setLoading(true);
+
+    const controller = new AbortController();
+    const { signal } = controller;
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, { ...options, signal });
         const jsonResult = await response.json();
 
         if (!wait) {
@@ -33,7 +36,8 @@ const useFetch = (url, options) => {
     fetchData();
 
     return () => {
-      wait = true;
+      setWait(true);
+      controller.abort();
     };
   }, [url]);
 
