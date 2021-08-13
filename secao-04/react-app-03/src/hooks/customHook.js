@@ -1,40 +1,78 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import { useEffect, useState } from 'react';
 import '../templates/App/styles.css';
 
 const useFetch = (url, options) => {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let wait = false;
+
     setLoading(true);
 
     const fetchData = async () => {
       try {
         const response = await fetch(url, options);
         const jsonResult = await response.json();
-        setResult(jsonResult);
+
+        if (!wait) {
+          if (Array.isArray(jsonResult)) setResult(jsonResult);
+          if (!Array.isArray(jsonResult)) setResult([jsonResult]);
+        }
+
         setLoading(false);
       } catch (error) {
-        setLoading(false);
+        if (!wait) setLoading(false);
         console.error(error);
       }
     };
 
     fetchData();
+
+    return () => {
+      wait = true;
+    };
   }, [url]);
 
   return [result, loading];
 };
 
 const Home = () => {
+  const [postID, setPostID] = useState('');
+
   const [result, loading] = useFetch(
-    'https://jsonplaceholder.typicode.com/posts',
+    `https://jsonplaceholder.typicode.com/posts/${postID}`,
+    { method: 'GET' },
   );
 
-  if (loading) return <p>Loading...</p>;
-  if (!loading && result) console.log(result);
+  const handleClick = (id) => {
+    setPostID(id);
+  };
+
+  if (loading)
+    return (
+      <main className='App'>
+        <h1>Loading...</h1>
+      </main>
+    );
+
+  if (!loading && result)
+    return (
+      <main className='App'>
+        <h1 onClick={() => handleClick('')}>Posts</h1>
+        <section>
+          {result.map((post) => (
+            <article key={post.id} onClick={() => handleClick(post.id)}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </article>
+          ))}
+        </section>
+      </main>
+    );
 
   return (
     <main className='App'>
