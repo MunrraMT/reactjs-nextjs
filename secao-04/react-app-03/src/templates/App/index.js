@@ -1,15 +1,18 @@
 import './styles.css';
 
-import PostsProvider from '../../contexts/postsProviders';
+import PostsProvider from '../../contexts/postsProvider';
 import Posts from '../../components/Posts';
+import CounterProvider from '../../contexts/CounterProvider';
 
 function App() {
   return (
-    <PostsProvider>
-      <main className='App'>
-        <Posts />
-      </main>
-    </PostsProvider>
+    <CounterProvider>
+      <PostsProvider>
+        <main className='App'>
+          <Posts />
+        </main>
+      </PostsProvider>
+    </CounterProvider>
   );
 }
 
