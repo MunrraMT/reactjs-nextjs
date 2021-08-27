@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './hooks/customHook';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
+
+import './index.css';
+
+import Home2 from './hooks/customHook2';
 // import App from './templates/App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Home />
+    <Home2 />
   </React.StrictMode>,
   document.getElementById('root'),
 );
