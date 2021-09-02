@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
+import UseLayoutEffect from './hooks/use-layout-effect';
 
-import Home2 from './hooks/customHook2';
 // import App from './templates/App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Home2 />
+    <UseLayoutEffect />
   </React.StrictMode>,
   document.getElementById('root'),
 );
