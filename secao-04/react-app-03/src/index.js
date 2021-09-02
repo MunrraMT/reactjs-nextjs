@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import UseLayoutEffect from './hooks/use-layout-effect';
+import UseImperativeHandle from './hooks/use-imperative-handle';
 
 // import App from './templates/App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <UseLayoutEffect />
+    <UseImperativeHandle />
   </React.StrictMode>,
   document.getElementById('root'),
 );
