@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import UseImperativeHandle from './hooks/use-imperative-handle';
+import ErrorBondaries from './components/ErrorBondaries';
 
 // import App from './templates/App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <UseImperativeHandle />
+    <ErrorBondaries />
   </React.StrictMode>,
   document.getElementById('root'),
 );
