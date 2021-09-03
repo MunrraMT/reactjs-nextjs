@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import { Children, cloneElement, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-// Compound Components
+// Compound Components with ContextAPI
+
+const TurnOnOffContext = createContext();
 
 const TurnOnOff = ({ children }) => {
   const [isOn, setIsOn] = useState(false);
@@ -11,28 +13,43 @@ const TurnOnOff = ({ children }) => {
     setIsOn((prev) => !prev);
   };
 
-  return Children.map(children, (child) => {
-    const newChild = cloneElement(child, { isOn, onTurn });
-
-    return newChild;
-  });
+  return (
+    <TurnOnOffContext.Provider value={{ isOn, onTurn }}>
+      {children}
+    </TurnOnOffContext.Provider>
+  );
 };
 
-const TurnedOn = ({ isOn, children }) => isOn && children;
+const TurnedOn = ({ children }) => {
+  const { isOn } = useContext(TurnOnOffContext);
 
-const TurnedOff = ({ isOn, children }) => !isOn && children;
+  return isOn && children;
+};
 
-const TurnButton = ({ isOn, onTurn }) => (
-  <button onClick={onTurn} type="button">
-    {isOn ? 'Desligar' : 'Ligar'}
-  </button>
-);
+const TurnedOff = ({ children }) => {
+  const { isOn } = useContext(TurnOnOffContext);
+
+  return !isOn && children;
+};
+
+const TurnButton = () => {
+  const { isOn, onTurn } = useContext(TurnOnOffContext);
+
+  return (
+    <button onClick={onTurn} type="button">
+      {isOn ? 'Desligar' : 'Ligar'}
+    </button>
+  );
+};
 
 const ReactChildrenCloneElement = () => (
   <TurnOnOff>
-    <TurnedOn>Ligado</TurnedOn>
-    <TurnedOff>Desligado</TurnedOff>
-    <TurnButton />
+    <div>
+      <TurnedOn>Ligado</TurnedOn>
+      <TurnedOff>Desligado</TurnedOff>
+      <p>Será que faz quebrar?</p>
+      <TurnButton />
+    </div>
   </TurnOnOff>
 );
 
