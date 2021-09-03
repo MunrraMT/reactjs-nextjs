@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import ErrorBondaries from './components/ErrorBondaries';
+import ReactChildrenCloneElement from './components/react-children-clone-element';
 
 // import App from './templates/App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <ErrorBondaries />
+    <ReactChildrenCloneElement />
   </React.StrictMode>,
   document.getElementById('root'),
 );
