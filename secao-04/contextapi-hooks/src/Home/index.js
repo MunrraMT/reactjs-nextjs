@@ -1,5 +1,7 @@
+import { useCounterContext } from '../contexts/CounterContext';
+
 const Home = () => {
-  console.log('Oi');
+  const [state, dispatch] = useCounterContext();
 
   return (
     <main>
