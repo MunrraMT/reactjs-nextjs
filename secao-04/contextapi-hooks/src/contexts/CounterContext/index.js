@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useRef } from 'react';
-import { buildActions } from './build-actions';
+import buildActions from './build-actions';
 
 import reducer from './reducer';
 

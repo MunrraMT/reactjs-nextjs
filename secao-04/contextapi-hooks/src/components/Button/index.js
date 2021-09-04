@@ -1,5 +1,5 @@
-const Button = ({ children, onBtnClick }) => (
-  <button onClick={onBtnClick} type="button">
+const Button = ({ children, onBtnClick, disabled }) => (
+  <button disabled={disabled} onClick={onBtnClick} type="button">
     {children}
   </button>
 );

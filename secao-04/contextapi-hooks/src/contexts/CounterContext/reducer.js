@@ -13,7 +13,7 @@ const reducer = (state, action) => {
       return { ...initialState };
 
     case actionTypes.SET_COUNTER:
-      return { ...state, ...action.payload };
+      return { ...state, counter: action.payload };
 
     case actionTypes.ASYNC_INCREASE_START:
       return { ...state, loading: true };
