@@ -1,14 +1,20 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
+import Button from '../components/Button';
+import Header from '../components/Header';
 import { useCounterContext } from '../contexts/CounterContext';
 
 const Home = () => {
   const [state, actions] = useCounterContext();
 
-  useEffect(() => actions.increase(), [actions]);
+  const [value, setValue] = useState('');
 
   return (
     <main>
-      <h1 onClick={() => actions.increase()}>Oi</h1>
+      <Header />
+
+      <Button onBtnClick={actions.increase}>Increase</Button>
+      <Button onBtnClick={actions.decrease}>Decrease</Button>
+      <Button onBtnClick={actions.reset}>Reset</Button>
     </main>
   );
 };

@@ -6,7 +6,17 @@ const buildActions = (dispatch) => {
       dispatch({
         type: actionTypes.INCREASE,
       }),
+
+    decrease: () =>
+      dispatch({
+        type: actionTypes.DECREASE,
+      }),
+
+    reset: () =>
+      dispatch({
+        type: actionTypes.RESET,
+      }),
   };
 };
 
-export default buildActions;
+export { buildActions };
