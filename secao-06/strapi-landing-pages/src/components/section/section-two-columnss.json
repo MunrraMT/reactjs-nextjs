@@ -1,8 +1,9 @@
 {
   "collectionName": "components_section_section_two_columnsses",
   "info": {
-    "displayName": "section_two_columnss",
-    "icon": "columns"
+    "displayName": "section_two_columns",
+    "icon": "columns",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,12 +18,12 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "metadata": {
       "type": "component",

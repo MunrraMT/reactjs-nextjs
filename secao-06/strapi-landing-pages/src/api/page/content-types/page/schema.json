@@ -27,7 +27,8 @@
     "sections": {
       "type": "dynamiczone",
       "components": [
-        "section.section-two-columnss"
+        "section.section-two-columnss",
+        "section.section-grid"
       ],
       "required": true
     }
