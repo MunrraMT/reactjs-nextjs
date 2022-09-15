@@ -55,3 +55,6 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+link para get:
+http://localhost:1337/api/pages/2?populate[menu][populate]=_&populate[sections][populate]=_
