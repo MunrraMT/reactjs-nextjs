@@ -28,7 +28,8 @@
       "type": "dynamiczone",
       "components": [
         "section.section-two-columns",
-        "section.section-grid"
+        "section.section-grid",
+        "section.section-content"
       ],
       "required": true
     }
