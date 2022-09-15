@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_menu_menu_other_links",
+  "info": {
+    "displayName": "menu_other_link",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link_text": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "text",
+      "required": true
+    },
+    "open_new_tab": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
