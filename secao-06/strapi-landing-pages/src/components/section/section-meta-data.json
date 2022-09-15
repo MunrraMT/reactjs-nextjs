@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_section_section_meta_data",
+  "info": {
+    "displayName": "section-meta-data",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 250,
+      "minLength": 5
+    },
+    "section_id": {
+      "type": "string",
+      "regex": "^[a-zA-Z]+([0-9-]*[a-zA-Z]+)*$",
+      "required": true,
+      "unique": true,
+      "minLength": 3,
+      "maxLength": 250
+    },
+    "background_image": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
