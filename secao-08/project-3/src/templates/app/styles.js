@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   ${({ theme }) => css`
     background: ${theme.colors.mainBg};
   `}

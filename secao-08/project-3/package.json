@@ -47,6 +47,7 @@
     "eslint-plugin-prettier": "4.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
-    "eslint-plugin-testing-library": "5.x"
+    "eslint-plugin-testing-library": "5.x",
+    "jest-styled-components": "^7.1.1"
   }
 }
