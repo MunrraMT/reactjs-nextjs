@@ -1,10 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const Wrapper = styled.header`
-  ${({ theme }) => css`
-    background: ${theme.colors.mainBg};
-  `}
-`;
+const Wrapper = styled.header``;
 
 // eslint-disable-next-line import/prefer-default-export
 export { Wrapper };

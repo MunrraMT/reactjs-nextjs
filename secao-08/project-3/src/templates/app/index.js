@@ -1,11 +1,10 @@
+import Heading from '../../components/Heading';
 import * as Styled from './styles';
 
-function Home() {
-  return (
-    <Styled.Wrapper data-testid="wrapper">
-      <h1>Hello</h1>
-    </Styled.Wrapper>
-  );
-}
+const Home = () => (
+  <Styled.Wrapper data-testid="wrapper">
+    <Heading>Hello</Heading>
+  </Styled.Wrapper>
+);
 
 export default Home;

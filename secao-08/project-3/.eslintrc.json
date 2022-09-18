@@ -12,6 +12,7 @@
         "plugin:jest/recommended",
         "plugin:testing-library/react",
         "plugin:jsx-a11y/recommended",
+        "plugin:storybook/recommended",
         "prettier"
     ],
     "parserOptions": {
@@ -26,6 +27,7 @@
         "jest",
         "testing-library",
         "jsx-a11y",
+        "storybook",
         "prettier"
     ],
     "overrides": [
@@ -42,10 +44,32 @@
                 "plugin:jest/recommended",
                 "plugin:testing-library/react"
             ]
+        },
+        {
+            "files": [
+                "stories.[jt]s?(x)"
+            ],
+            "rules": {
+                "react/jsx-props-no-spreading": "off"
+            }
+        },
+        {
+            "files": [
+                "styles.[jt]s?(x)"
+            ],
+            "rules": {
+                "import/prefer-default-export": "off"
+            }
         }
     ],
     "rules": {
         "react/jsx-filename-extension": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function"
+            }
+        ]
     }
 }
